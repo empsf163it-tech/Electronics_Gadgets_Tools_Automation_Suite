@@ -1,0 +1,2 @@
+# Electronics_Gadgets_Tools_Automation_Suite
+Automated website repository for Electronics_Gadgets_Tools_Automation_Suite
