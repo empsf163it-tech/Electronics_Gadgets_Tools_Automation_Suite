@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+  <defs>
+    <linearGradient id="electraFav" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#55d6c2" />
+      <stop offset="100%" stop-color="#7aa7ff" />
+    </linearGradient>
+    <linearGradient id="bgFav" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10232e" />
+      <stop offset="100%" stop-color="#071017" />
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="36" height="36" rx="9" fill="url(#bgFav)" stroke="url(#electraFav)" stroke-width="2"/>
+  <path d="M 8 20 H 11 M 29 20 H 32 M 20 8 V 11 M 20 29 V 32" stroke="url(#electraFav)" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <path d="M22 9L13 21H19L17 31L27 19H21L22 9Z" fill="url(#electraFav)"/>
+</svg>

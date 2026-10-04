@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up — Electra</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="auth-page">
+  <main class="auth-main">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <a class="brand" href="index.html" aria-label="Electra home">
+          <svg class="brand-logo" width="44" height="44" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="electraGradAuth" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#55d6c2" />
+                <stop offset="100%" stop-color="#7aa7ff" />
+              </linearGradient>
+              <linearGradient id="bgGradAuth" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#10232e" />
+                <stop offset="100%" stop-color="#071017" />
+              </linearGradient>
+            </defs>
+            <rect x="2" y="2" width="36" height="36" rx="9" fill="url(#bgGradAuth)" stroke="url(#electraGradAuth)" stroke-width="1.5" />
+            <path d="M 8 20 H 11 M 29 20 H 32 M 20 8 V 11 M 20 29 V 32" stroke="url(#electraGradAuth)" stroke-width="1.5" stroke-linecap="round" opacity="0.6" />
+            <path d="M22 9L13 21H19L17 31L27 19H21L22 9Z" fill="url(#electraGradAuth)" />
+          </svg>
+          <span class="brand-text">ELECTRA<span>.</span></span>
+        </a>
+      </div>
+      
+      <div class="eyebrow">CREATE PROFILE</div>
+      <h1>Sign Up</h1>
+      <p>Create your Electra account.</p>
+      
+      <form>
+        <label>
+          Full Name
+          <input type="text" placeholder="John Doe" required>
+        </label>
+        
+        <label>
+          Email
+          <input type="email" placeholder="name@example.com" required>
+        </label>
+        
+        <label>
+          Password
+          <input type="password" placeholder="Min. 8 characters" minlength="8" required>
+        </label>
+        
+        <label>
+          Confirm Password
+          <input type="password" placeholder="Re-enter password" minlength="8" required>
+        </label>
+        
+        <button class="btn primary full" type="submit">Create Account</button>
+      </form>
+      
+      <p class="switch">Already registered? <a href="login.html">Login</a></p>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
