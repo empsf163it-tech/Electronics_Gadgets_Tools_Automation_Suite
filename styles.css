@@ -44,13 +44,12 @@ p {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 20;
+  z-index: 100;
   min-height: 76px;
   padding: 0 4vw;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 24px;
   background: rgba(7, 16, 23, 0.94);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(14px);
@@ -64,6 +63,7 @@ p {
   letter-spacing: 0.05em;
   white-space: nowrap;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .brand-logo {
@@ -91,19 +91,28 @@ p {
   color: var(--accent);
 }
 
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  margin-left: 48px;
+}
+
 .main-nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 24px;
+  gap: 32px;
 }
 
 .main-nav a {
   font-size: 15px;
   color: #d8e5ea;
   position: relative;
-  padding: 4px 0;
+  padding: 6px 0;
   transition: color 0.2s ease;
+  font-weight: 500;
 }
 
 .main-nav a:hover,
@@ -127,7 +136,8 @@ p {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
+  margin-left: auto;
 }
 
 .auth-links a {
@@ -136,9 +146,9 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 38px;
-  padding: 0 18px;
-  border-radius: 4px;
+  height: 40px;
+  padding: 0 22px;
+  border-radius: 6px;
   text-decoration: none;
   box-sizing: border-box;
   transition: all 0.2s ease;
@@ -153,19 +163,19 @@ p {
 .auth-links .login:hover {
   border-color: var(--accent);
   color: var(--accent);
-  background: rgba(85, 214, 194, 0.05);
+  background: rgba(85, 214, 194, 0.08);
 }
 
 .auth-links .signup {
   border: 1px solid var(--accent);
   color: var(--accent);
-  background: rgba(85, 214, 194, 0.05);
+  background: rgba(85, 214, 194, 0.08);
 }
 
 .auth-links .signup:hover {
   background: var(--accent);
   color: #04110f;
-  box-shadow: 0 4px 15px rgba(85, 214, 194, 0.25);
+  box-shadow: 0 4px 18px rgba(85, 214, 194, 0.3);
 }
 
 .menu-toggle {
@@ -886,51 +896,195 @@ input::placeholder {
   font-size: 15px;
 }
 
+/* Password Visibility Toggle */
+.password-field-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.password-field-wrap input {
+  padding-right: 44px;
+}
+
+.toggle-password-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.toggle-password-btn:hover {
+  color: var(--accent);
+  background: rgba(85, 214, 194, 0.1);
+}
+
+/* Social Login Buttons & Divider */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 22px 0 18px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--line);
+}
+
+.auth-divider span {
+  padding: 0 12px;
+  font: 700 11px "Space Mono", monospace;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+
+.social-auth-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  background: var(--surface2);
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.social-btn:hover {
+  border-color: var(--accent);
+  background: rgba(85, 214, 194, 0.08);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
 /* Mobile & Responsive Rules */
 @media (max-width: 1000px) {
   .site-header {
-    grid-template-columns: 1fr auto;
+    padding: 0 20px;
+    justify-content: space-between;
   }
   
-  .main-nav,
-  .auth-links {
+  .nav-wrapper {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--surface2);
+    flex-direction: column;
+    padding: 28px 24px;
+    border-bottom: 1px solid var(--line);
+    border-top: 1px solid rgba(85, 214, 194, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.75);
+    gap: 24px;
+    margin-left: 0;
+  }
+
+  .nav-wrapper.mobile-open {
+    display: flex;
+    animation: menuSlideDown 0.25s ease-out forwards;
+  }
+  
+  .main-nav {
+    flex-direction: column;
+    width: 100%;
+    gap: 14px;
+    align-items: center;
+  }
+  
+  .main-nav a {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 20px;
+    width: 100%;
+    text-align: center;
+    border-radius: 6px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  
+  .main-nav a:hover,
+  .main-nav a.active {
+    background: rgba(85, 214, 194, 0.08);
+    color: var(--accent);
+  }
+  
+  .main-nav a.active::after {
     display: none;
   }
-  
-  .main-nav.mobile-open,
-  .auth-links.mobile-open {
-    display: flex;
-  }
-  
-  .main-nav.mobile-open {
-    position: absolute;
-    top: 76px;
-    left: 0;
-    right: 0;
-    background: var(--surface);
-    flex-direction: column;
-    padding: 24px;
-    border-bottom: 1px solid var(--line);
-    gap: 16px;
-  }
-  
-  .auth-links.mobile-open {
-    position: absolute;
-    top: 310px;
-    left: 0;
-    right: 0;
-    background: var(--surface);
+
+  .auth-links {
+    width: 100%;
     justify-content: center;
-    padding: 0 24px 24px;
-    border-bottom: 1px solid var(--line);
+    gap: 14px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    margin-top: 4px;
+  }
+
+  .auth-links a {
+    flex: 1;
+    max-width: 180px;
+    height: 44px;
+    font-size: 15px;
   }
   
   .menu-toggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    color: var(--text);
+    font-size: 20px;
+    background: var(--surface);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .menu-toggle:hover {
+    border-color: var(--accent);
+    color: var(--accent);
   }
   
   .card-grid.three {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@keyframes menuSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
