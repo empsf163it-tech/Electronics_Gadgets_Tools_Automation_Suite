@@ -91,3 +91,26 @@ function updateActiveNav() {
 
 window.addEventListener('scroll', updateActiveNav, { passive: true });
 window.addEventListener('DOMContentLoaded', updateActiveNav);
+
+// Back to Top Button Functionality
+const backToTopBtn = document.getElementById('back-to-top');
+
+if (backToTopBtn) {
+  const toggleBackToTop = () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+  };
+
+  window.addEventListener('scroll', toggleBackToTop, { passive: true });
+  window.addEventListener('DOMContentLoaded', toggleBackToTop);
+
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
